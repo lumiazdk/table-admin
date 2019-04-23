@@ -52,7 +52,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('d2admin', {
+    ...mapGetters('admin', {
       logLength: 'log/length',
       logLengthError: 'log/lengthError'
     }),
@@ -65,7 +65,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations('d2admin/log', [
+    ...mapMutations('admin/log', [
       'clean'
     ]),
     handleClick () {

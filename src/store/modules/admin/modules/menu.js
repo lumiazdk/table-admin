@@ -22,7 +22,7 @@ export default {
         // store 赋值
         state.asideCollapse = collapse
         // 持久化
-        await dispatch('d2admin/db/set', {
+        await dispatch('admin/db/set', {
           dbName: 'sys',
           path: 'menu.asideCollapse',
           value: state.asideCollapse,
@@ -41,7 +41,7 @@ export default {
         // store 赋值
         state.asideCollapse = !state.asideCollapse
         // 持久化
-        await dispatch('d2admin/db/set', {
+        await dispatch('admin/db/set', {
           dbName: 'sys',
           path: 'menu.asideCollapse',
           value: state.asideCollapse,
@@ -58,7 +58,7 @@ export default {
     asideCollapseLoad ({ state, dispatch }) {
       return new Promise(async resolve => {
         // store 赋值
-        state.asideCollapse = await dispatch('d2admin/db/get', {
+        state.asideCollapse = await dispatch('admin/db/get', {
           dbName: 'sys',
           path: 'menu.asideCollapse',
           defaultValue: setting.menu.asideCollapse,

@@ -6,7 +6,7 @@ export default {
     Vue.config.errorHandler = function (err, vm, info) {
       Vue.nextTick(() => {
         // 添加 log
-        store.dispatch('d2admin/log/add', {
+        store.dispatch('admin/log/add', {
           type: 'error',
           err,
           vm,

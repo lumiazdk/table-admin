@@ -127,13 +127,13 @@ export default {
     };
   },
   computed: {
-    ...mapState("d2admin", {
+    ...mapState("admin", {
       keepAlive: state => state.page.keepAlive,
       grayActive: state => state.gray.active,
       transitionActive: state => state.transition.active,
       asideCollapse: state => state.menu.asideCollapse
     }),
-    ...mapGetters("d2admin", {
+    ...mapGetters("admin", {
       themeActiveSetting: "theme/activeSetting"
     }),
     /**
@@ -152,7 +152,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions("d2admin/menu", ["asideCollapseToggle"]),
+    ...mapActions("admin/menu", ["asideCollapseToggle"]),
     /**
      * 接收点击切换侧边栏的按钮
      */

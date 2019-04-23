@@ -151,7 +151,7 @@ export default {
     clearInterval(this.timeInterval);
   },
   methods: {
-    ...mapActions("d2admin/account", ["login"]),
+    ...mapActions("admin/account", ["login"]),
     checkYZM(rule, value, callback) {
       callback();
       return;

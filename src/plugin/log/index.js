@@ -8,7 +8,7 @@ export default {
     // 快速记录日志
     Vue.prototype.$logAdd = function (info, show = true) {
       // store 赋值
-      store.dispatch('d2admin/log/add', {
+      store.dispatch('admin/log/add', {
         type: 'log',
         info
       })

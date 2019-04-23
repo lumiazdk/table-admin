@@ -1,24 +1,24 @@
 export default {
   namespaced: true,
   state: {
-    // 尺寸
-    value: '' // medium small mini
+    // 用户信息
+    info: {}
   },
   actions: {
     /**
-     * @description 设置尺寸
+     * @description 设置用户数据
      * @param {Object} state vuex state
-     * @param {String} size 尺寸
+     * @param {*} info info
      */
-    set ({ state, dispatch }, size) {
+    set ({ state, dispatch }, info) {
       return new Promise(async resolve => {
         // store 赋值
-        state.value = size
+        state.info = info
         // 持久化
-        await dispatch('d2admin/db/set', {
+        await dispatch('admin/db/set', {
           dbName: 'sys',
-          path: 'size.value',
-          value: state.value,
+          path: 'user.info',
+          value: info,
           user: true
         }, { root: true })
         // end
@@ -26,16 +26,16 @@ export default {
       })
     },
     /**
-     * @description 从持久化数据读取尺寸设置
+     * @description 从数据库取用户数据
      * @param {Object} state vuex state
      */
     load ({ state, dispatch }) {
       return new Promise(async resolve => {
         // store 赋值
-        state.value = await dispatch('d2admin/db/get', {
+        state.info = await dispatch('admin/db/get', {
           dbName: 'sys',
-          path: 'size.value',
-          defaultValue: 'default',
+          path: 'user.info',
+          defaultValue: {},
           user: true
         }, { root: true })
         // end

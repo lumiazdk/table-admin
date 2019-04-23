@@ -18,7 +18,7 @@
         <el-input placeholder="请输入内容" class="input-width"></el-input>
         <el-button type="primary" class="d2-ml-10">查询</el-button>
       </div>
-      <el-table :data="tableData" style="width: 100%" v-loading="loading">
+      <el-table :data="tableData" style="width: 100%" v-loading="loading" height="400">
         <el-table-column prop="date" label="日期"></el-table-column>
         <el-table-column prop="name" label="渠道ID"></el-table-column>
         <el-table-column prop="address" label="渠道名称"></el-table-column>
@@ -54,6 +54,31 @@ export default {
           date: "2016-05-01",
           name: "王小虎",
           address: "上海市普陀区金沙江路 1519 弄"
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄"
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄"
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄"
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄"
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄"
         },
         {
           date: "2016-05-03",

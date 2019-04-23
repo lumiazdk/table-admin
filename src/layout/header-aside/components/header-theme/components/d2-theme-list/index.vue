@@ -39,10 +39,10 @@ export default {
     };
   },
   computed: {
-    ...mapState("d2admin/theme", ["list", "activeName"])
+    ...mapState("admin/theme", ["list", "activeName"])
   },
   methods: {
-    ...mapActions("d2admin/theme", ["set"]),
+    ...mapActions("admin/theme", ["set"]),
     handleSelectTheme(name) {
       this.set(name);
     }

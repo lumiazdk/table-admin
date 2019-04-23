@@ -1,24 +1,27 @@
+// 设置文件
+import setting from '@/setting.js'
+
 export default {
   namespaced: true,
   state: {
-    // 用户信息
-    info: {}
+    // 是否开启页面过度动画
+    active: setting.transition.active
   },
   actions: {
     /**
-     * @description 设置用户数据
+     * @description 设置开启状态
      * @param {Object} state vuex state
-     * @param {*} info info
+     * @param {Boolean} active 新的状态
      */
-    set ({ state, dispatch }, info) {
+    set ({ state, dispatch }, active) {
       return new Promise(async resolve => {
         // store 赋值
-        state.info = info
+        state.active = active
         // 持久化
-        await dispatch('d2admin/db/set', {
+        await dispatch('admin/db/set', {
           dbName: 'sys',
-          path: 'user.info',
-          value: info,
+          path: 'transition.active',
+          value: state.active,
           user: true
         }, { root: true })
         // end
@@ -26,16 +29,16 @@ export default {
       })
     },
     /**
-     * @description 从数据库取用户数据
+     * 从数据库读取页面过渡动画设置
      * @param {Object} state vuex state
      */
     load ({ state, dispatch }) {
       return new Promise(async resolve => {
         // store 赋值
-        state.info = await dispatch('d2admin/db/get', {
+        state.active = await dispatch('admin/db/get', {
           dbName: 'sys',
-          path: 'user.info',
-          defaultValue: {},
+          path: 'transition.active',
+          defaultValue: setting.transition.active,
           user: true
         }, { root: true })
         // end

@@ -34,7 +34,7 @@ export default {
             util.cookies.set('uuid', res.uuid)
             util.cookies.set('token', res.token)
             // 设置 vuex 用户信息
-            await dispatch('d2admin/user/set', {
+            await dispatch('admin/user/set', {
               name: res.name
             }, { root: true })
             // 用户登录后从持久化数据加载一系列的设置
@@ -63,7 +63,7 @@ export default {
         util.cookies.remove('token')
         util.cookies.remove('uuid')
         // 清空 vuex 用户信息
-        await dispatch('d2admin/user/set', {}, { root: true })
+        await dispatch('admin/user/set', {}, { root: true })
         // 跳转路由
         vm.$router.push({
           name: 'login'
@@ -71,18 +71,18 @@ export default {
       }
       // 判断是否需要确认
       if (confirm) {
-        commit('d2admin/gray/set', true, { root: true })
+        commit('admin/gray/set', true, { root: true })
         vm.$confirm('注销当前账户吗?  打开的标签页和用户设置将会被保存。', '确认操作', {
           confirmButtonText: '确定注销',
           cancelButtonText: '放弃',
           type: 'warning'
         })
           .then(() => {
-            commit('d2admin/gray/set', false, { root: true })
+            commit('admin/gray/set', false, { root: true })
             logout()
           })
           .catch(() => {
-            commit('d2admin/gray/set', false, { root: true })
+            commit('admin/gray/set', false, { root: true })
             vm.$message('放弃注销用户')
           })
       } else {
@@ -96,17 +96,17 @@ export default {
     load ({ commit, dispatch }) {
       return new Promise(async resolve => {
         // DB -> store 加载用户名
-        await dispatch('d2admin/user/load', null, { root: true })
+        await dispatch('admin/user/load', null, { root: true })
         // DB -> store 加载主题
-        await dispatch('d2admin/theme/load', null, { root: true })
+        await dispatch('admin/theme/load', null, { root: true })
         // DB -> store 加载页面过渡效果设置
-        await dispatch('d2admin/transition/load', null, { root: true })
+        await dispatch('admin/transition/load', null, { root: true })
         // DB -> store 持久化数据加载上次退出时的多页列表
-        await dispatch('d2admin/page/openedLoad', null, { root: true })
+        await dispatch('admin/page/openedLoad', null, { root: true })
         // DB -> store 持久化数据加载侧边栏折叠状态
-        await dispatch('d2admin/menu/asideCollapseLoad', null, { root: true })
+        await dispatch('admin/menu/asideCollapseLoad', null, { root: true })
         // DB -> store 持久化数据加载全局尺寸
-        await dispatch('d2admin/size/load', null, { root: true })
+        await dispatch('admin/size/load', null, { root: true })
         // end
         resolve()
       })

@@ -26,7 +26,7 @@ export default {
     openedLoad ({ state, commit, dispatch }) {
       return new Promise(async resolve => {
         // store 赋值
-        const value = await dispatch('d2admin/db/get', {
+        const value = await dispatch('admin/db/get', {
           dbName: 'sys',
           path: 'page.opened',
           defaultValue: setting.page.opened,
@@ -65,7 +65,7 @@ export default {
     opend2db ({ state, dispatch }) {
       return new Promise(async resolve => {
         // 设置数据
-        dispatch('d2admin/db/set', {
+        dispatch('admin/db/set', {
           dbName: 'sys',
           path: 'page.opened',
           value: state.opened,

@@ -13,7 +13,7 @@ function errorCreate (msg) {
 // 记录和显示错误
 function errorLog (err) {
   // 添加到日志
-  store.dispatch('d2admin/log/add', {
+  store.dispatch('admin/log/add', {
     type: 'error',
     err,
     info: '数据请求异常'
@@ -62,7 +62,7 @@ service.interceptors.response.use(
     const { code } = dataAxios
     // 根据 code 进行判断
     if (code === undefined) {
-      // 如果没有 code 代表这不是项目后端开发的接口 比如可能是 D2Admin 请求最新版本
+      // 如果没有 code 代表这不是项目后端开发的接口 比如可能是 Admin 请求最新版本
       return dataAxios
     } else {
       console.log(response)

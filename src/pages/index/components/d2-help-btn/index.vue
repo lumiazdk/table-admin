@@ -15,7 +15,7 @@
             <d2-icon name="github" class="d2-mr-5"/>
             主页
           </el-button>
-          <el-button @click="$open('https://doc.d2admin.fairyever.com/zh/')">
+          <el-button @click="$open('https://doc.admin.fairyever.com/zh/')">
             <d2-icon name="book" class="d2-mr-5"/>
             中文文档
           </el-button>

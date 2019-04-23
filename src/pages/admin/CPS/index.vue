@@ -17,7 +17,7 @@
         <el-input placeholder="请输入内容" class="input-width"></el-input>
         <el-button type="primary" class="d2-ml-10">查询</el-button>
       </div>
-      <el-table :data="tableData" style="width: 100%">
+      <el-table :data="tableData" style="width: 100%" height="400" v-loading="loading">
         <el-table-column prop="date" label="日期"></el-table-column>
         <el-table-column prop="name" label="渠道ID"></el-table-column>
         <el-table-column prop="address" label="渠道名称"></el-table-column>
@@ -62,7 +62,8 @@ export default {
           name: "王小虎",
           address: "上海市普陀区金沙江路 1516 弄"
         }
-      ]
+      ],
+      loading:false
     };
   }
 };
