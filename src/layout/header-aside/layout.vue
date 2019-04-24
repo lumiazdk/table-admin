@@ -43,7 +43,7 @@
           <!-- <d2-header-error-log/> -->
           <d2-header-fullscreen/>
           <d2-header-theme/>
-          <d2-header-size/>
+          <!-- <d2-header-size/> -->
           <d2-header-user/>
         </div>
       </div>

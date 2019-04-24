@@ -23,5 +23,7 @@ export default {
 .el-table th {
   background: #e5e9f2 !important;
 }
-
+.el-table__empty-block {
+  min-height: 350px !important;
+}
 </style>

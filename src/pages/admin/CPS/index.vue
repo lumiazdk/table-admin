@@ -24,7 +24,6 @@
       <el-table
         :data="tableData"
         style="width: 100%"
-        height="400"
         v-loading="loading"
         size="small"
         element-loading-text="拼命加载中"

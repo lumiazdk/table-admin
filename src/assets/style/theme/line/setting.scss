@@ -57,3 +57,33 @@ $theme-aside-menu-empty-background-color: rgba(#000, .03);
 $theme-aside-menu-empty-icon-color-hover: $color-text-main;
 $theme-aside-menu-empty-text-color-hover: $color-text-main;
 $theme-aside-menu-empty-background-color-hover: rgba(#000, .05);
+
+.theme-line {
+
+    .el-button--primary,
+    .el-pagination.is-background .el-pager li:not(.disabled).active {
+        background-color: #cfd7e5 !important;
+    }
+
+    .el-form-item.is-success .el-input__inner,
+    .el-form-item.is-success .el-input__inner:focus,
+    .el-form-item.is-success .el-textarea__inner,
+    .el-form-item.is-success .el-textarea__inner:focus,
+    .el-range-editor.is-active,
+    .el-range-editor.is-active:hover,
+    .el-button--primary,
+    .el-input.is-active .el-input__inner,
+    .el-input__inner:focus {
+        border-color: #cfd7e5 !important;
+    }
+
+    .el-table .descending .sort-caret.descending {
+        border-top-color: grey;
+
+    }
+
+    .el-table .ascending .sort-caret.ascending {
+        border-bottom-color: grey;
+
+    }
+}

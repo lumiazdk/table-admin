@@ -82,4 +82,8 @@ $theme-aside-menu-empty-background-color-hover: rgba(#000, .05);
     .el-input__inner:focus {
         border-color: #0288b9 !important;
     }
+    .el-table .ascending .sort-caret.ascending {
+        border-bottom-color: #0288b9;
+
+    }
 }
