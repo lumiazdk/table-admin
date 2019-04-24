@@ -167,12 +167,12 @@ export default {
 // 注册主题
 @import "~@/assets/style/theme/register.scss";
 .logo {
-  width: 87%;
+  width: 60%;
   margin-top: 10px;
   height: auto !important;
 }
-.logo-group img{
+.logo-group img {
   height: auto !important;
-  margin-top: 15px
+  margin-top: 20px;
 }
 </style>

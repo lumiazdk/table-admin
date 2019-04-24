@@ -132,9 +132,7 @@ export default {
       },
       // 校验
       rules: {
-        name: [
-          { required: true, message: "请输入用户名", trigger: "blur" }
-        ],
+        name: [{ required: true, message: "请输入用户名", trigger: "blur" }],
         password: [{ required: true, message: "请输入密码", trigger: "blur" }],
         code: [{ validator: this.checkYZM, trigger: "blur" }]
       },
@@ -189,8 +187,8 @@ export default {
           this.login({
             vm: this,
             name: this.formLogin.name,
-            password: this.formLogin.password,
-            verification:this.verification_code
+            password: this.base64encoder(this.formLogin.password.toString()),
+            verification: this.verification_code
           }).then(() => {
             // 重定向对象不存在则返回顶层路径
             this.$router.replace(this.$route.query.redirect || "/");
@@ -261,6 +259,10 @@ export default {
       let g = this.randomNum(min, max);
       let b = this.randomNum(min, max);
       return "rgb(" + r + "," + g + "," + b + ")";
+    },
+    base64encoder(Context) {
+      let encoder = new Buffer(Context).toString("base64");
+      return encoder;
     }
   }
 };
