@@ -1,7 +1,6 @@
 <template>
   <d2-container :filename="filename">
     <el-card class="box-card">
-      
       <el-form :inline="true" class="demo-form-inline">
         <el-form-item label="查询日期">
           <el-date-picker
@@ -9,7 +8,7 @@
             range-separator="至"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
-            v-model="time"
+            v-model="where.time"
             value-format="yyyy-MM-dd"
             size="small"
           ></el-date-picker>
@@ -21,9 +20,22 @@
           <el-button type="primary" :loading="true" v-if="loading" size="small">查询中</el-button>
           <el-button type="primary" v-if="!loading" @click="search" size="small">查询</el-button>
         </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="exportTable" size="small">导出</el-button>
+        </el-form-item>
       </el-form>
 
-      <el-table :data="tableData" style="width: 100%" v-loading="loading" height="400" size="small">
+      <el-table
+        :data="tableData"
+        style="width: 100%"
+        v-loading="loading"
+        height="400"
+        size="small"
+        id="tableExcel"
+        element-loading-text="拼命加载中"
+        element-loading-spinner="el-icon-loading"
+        element-loading-background="rgba(0, 0, 0, 0.8)"
+      >
         <template slot="c">
           <div>
             <img src="/image/noData.png" alt class="noData">
@@ -43,7 +55,13 @@
         <el-table-column prop="address" label="注册数" align="center"></el-table-column>
       </el-table>
       <div class="pagination">
-        <el-pagination background layout="prev, pager, next" :total="1000"></el-pagination>
+        <el-pagination
+          background
+          layout="prev, pager, next"
+          :total="total"
+          :page-size="pageSize"
+          @current-change="currentChange"
+        ></el-pagination>
       </div>
     </el-card>
   </d2-container>
@@ -102,16 +120,19 @@ export default {
           address: "上海市普陀区金沙江路 1516 弄"
         }
       ],
-      time: [
-        this.moment().format("YYYY-MM-DD"),
-        this.moment()
-          .add(1, "months")
-          .format("YYYY-MM-DD")
-      ],
+
       loading: false,
       page: 1,
-      total: 20,
-      pageSize: 10
+      total: 0,
+      pageSize: 10,
+      where: {
+        time: [
+          this.moment().format("YYYY-MM-DD"),
+          this.moment()
+            .add(1, "months")
+            .format("YYYY-MM-DD")
+        ]
+      }
     };
   },
   methods: {
@@ -124,6 +145,16 @@ export default {
     },
     currentChange(page) {
       console.log(page);
+    },
+    exportTable() {
+      $("#tableExcel").table2excel({
+        exclude: ".noExl", //过滤位置的 css 类名
+        filename: "CPA" + ".xls", //文件名称
+        name: "CPA.xlsx",
+        exclude_img: true,
+        exclude_links: true,
+        exclude_inputs: true
+      });
     }
   }
 };

@@ -109,7 +109,7 @@ export default {
       dialogVisible: false,
       users: [
         {
-          name: "管理员",
+          name: "朱定坤",
           name: "admin",
           password: "admin"
         },
@@ -140,10 +140,13 @@ export default {
     };
   },
   mounted() {
-    this.timeInterval = setInterval(() => {
-      this.refreshTime();
-    }, 1000);
     this.drawImg();
+    document.onkeydown = e => {
+      var key = window.event.keyCode;
+      if (key == 13) {
+        this.submit();
+      }
+    };
   },
   beforeDestroy() {
     clearInterval(this.timeInterval);
@@ -162,9 +165,7 @@ export default {
         callback();
       }
     },
-    refreshTime() {
-      this.time = dayjs().format("HH:mm:ss");
-    },
+
     /**
      * @description 接收选择一个用户快速登录的事件
      * @param {Object} user 用户信息

@@ -1,7 +1,6 @@
 <template>
   <d2-container :filename="filename">
     <el-card class="box-card">
-     
       <el-form :inline="true" class="demo-form-inline">
         <el-form-item label="查询日期">
           <el-date-picker
@@ -9,7 +8,7 @@
             range-separator="至"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
-            v-model="time"
+            v-model="where.time"
             value-format="yyyy-MM-dd"
             size="small"
           ></el-date-picker>
@@ -22,7 +21,16 @@
           <el-button type="primary" v-if="!loading" @click="search" size="small">查询</el-button>
         </el-form-item>
       </el-form>
-      <el-table :data="tableData" style="width: 100%" height="400" v-loading="loading" size="small">
+      <el-table
+        :data="tableData"
+        style="width: 100%"
+        height="400"
+        v-loading="loading"
+        size="small"
+        element-loading-text="拼命加载中"
+        element-loading-spinner="el-icon-loading"
+        element-loading-background="rgba(0, 0, 0, 0.8)"
+      >
         <template slot="empty">
           <div>
             <img src="/image/noData.png" alt class="noData">
@@ -65,16 +73,19 @@ export default {
     return {
       filename: __filename,
       tableData: [],
-      time: [
-        this.moment().format("YYYY-MM-DD"),
-        this.moment()
-          .add(1, "months")
-          .format("YYYY-MM-DD")
-      ],
+
       loading: false,
       page: 1,
-      total: 20,
-      pageSize: 10
+      total: 0,
+      pageSize: 10,
+      where: {
+        time: [
+          this.moment().format("YYYY-MM-DD"),
+          this.moment()
+            .add(1, "months")
+            .format("YYYY-MM-DD")
+        ]
+      }
     };
   },
   methods: {

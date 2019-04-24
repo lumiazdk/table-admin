@@ -7,3 +7,28 @@
     background: linear-gradient(120deg, #bc00e3 0%, #4EFFFB 100%);
   }
 }
+
+.theme-violet {
+
+  .el-button--primary,
+  .el-pagination.is-background .el-pager li:not(.disabled).active {
+    background-color: #bc00e3 !important;
+  }
+
+  .el-form-item.is-success .el-input__inner,
+  .el-form-item.is-success .el-input__inner:focus,
+  .el-form-item.is-success .el-textarea__inner,
+  .el-form-item.is-success .el-textarea__inner:focus,
+  .el-range-editor.is-active,
+  .el-range-editor.is-active:hover,
+  .el-button--primary,
+  .el-input.is-active .el-input__inner,
+  .el-input__inner:focus {
+    border-color: #bc00e3 !important;
+  }
+
+  .el-table .descending .sort-caret.descending {
+    border-top-color: #bc00e3;
+  }
+
+}

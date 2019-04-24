@@ -13,16 +13,14 @@ export default {
   },
   // 在读取持久化数据失败时默认页面
   page: {
-    opened: [
-      {
-        name: 'index',
-        fullPath: '/index',
-        meta: {
-          title: '首页',
-          auth: false
-        }
+    opened: [{
+      name: 'index',
+      fullPath: '/index',
+      meta: {
+        title: '首页',
+        auth: false
       }
-    ]
+    }]
   },
   // 菜单搜索
   search: {
@@ -34,10 +32,6 @@ export default {
         title: '默认',
         name: 'tomorrow-night-blue',
         preview: 'image/theme/tomorrow-night-blue/preview@2x.png'
-      }, {
-        title: '经典',
-        name: 'd2',
-        preview: 'image/theme/d2/preview@2x.png'
       },
       {
         title: '紫罗兰',
