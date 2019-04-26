@@ -8,7 +8,7 @@
             range-separator="至"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
-            v-model="where.time"
+            v-model="page.where.time"
             value-format="yyyy-MM-dd"
             size="small"
           ></el-date-picker>
@@ -17,8 +17,8 @@
           <el-input placeholder="请输入内容" class="input-width" size="small"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" :loading="true" v-if="loading" size="small">查询中</el-button>
-          <el-button type="primary" v-if="!loading" @click="search" size="small">查询</el-button>
+          <el-button type="primary" :loading="true" v-if="page.loading" size="small">查询中</el-button>
+          <el-button type="primary" v-if="!page.loading" @click="search" size="small">查询</el-button>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="exportTable" size="small">导出</el-button>
@@ -26,9 +26,9 @@
       </el-form>
 
       <el-table
-        :data="tableData"
+        :data="page.tableData"
         style="width: 100%"
-        v-loading="loading"
+        v-loading="page.loading"
         size="small"
         id="tableExcel"
         element-loading-text="拼命加载中"
@@ -57,8 +57,8 @@
         <el-pagination
           background
           layout="prev, pager, next"
-          :total="total"
-          :page-size="pageSize"
+          :total="page.total"
+          :page-size="page.pageSize"
           @current-change="currentChange"
         ></el-pagination>
       </div>
@@ -72,28 +72,29 @@ export default {
   data() {
     return {
       filename: __filename,
-      tableData: [],
-
-      loading: false,
-      page: 1,
-      total: 0,
-      pageSize: 10,
-      where: {
-        time: [
-          this.moment().format("YYYY-MM-DD"),
-          this.moment()
-            .add(1, "months")
-            .format("YYYY-MM-DD")
-        ]
+      page: {
+        tableData: [],
+        loading: false,
+        page: 1,
+        total: 0,
+        pageSize: 10,
+        where: {
+          time: [
+            this.moment().format("YYYY-MM-DD"),
+            this.moment()
+              .add(1, "months")
+              .format("YYYY-MM-DD")
+          ]
+        }
       }
     };
   },
   methods: {
     //列表搜索
     search() {
-      this.loading = true;
+      this.page.loading = true;
       setTimeout(() => {
-        this.loading = false;
+        this.page.loading = false;
       }, 1000);
     },
     currentChange(page) {
