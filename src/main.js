@@ -28,8 +28,9 @@ new Vue({
   created() {
     // 处理路由 得到每一级的路由设置
     this.$store.commit('admin/page/init', frameInRoutes)
-    // 设置顶栏菜单
+    // 设置顶栏菜单 设置权限
     this.$store.commit('admin/menu/headerSet', menuHeader)
+    console.log(menuAside)
     // 设置侧边栏菜单
     this.$store.commit('admin/menu/asideSet', menuAside)
     // 初始化菜单搜索功能

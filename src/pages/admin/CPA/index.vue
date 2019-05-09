@@ -14,14 +14,32 @@
           ></el-date-picker>
         </el-form-item>
         <el-form-item label="链接编号">
-          <el-input placeholder="请输入内容" class="input-width" size="small"></el-input>
+          <el-input
+            placeholder="请输入内容"
+            class="input-width"
+            size="small"
+          ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" :loading="true" v-if="page.loading" size="small">查询中</el-button>
-          <el-button type="primary" v-if="!page.loading" @click="search" size="small">查询</el-button>
+          <el-button
+            type="primary"
+            :loading="true"
+            v-if="page.loading"
+            size="small"
+            >查询中</el-button
+          >
+          <el-button
+            type="primary"
+            v-if="!page.loading"
+            @click="search"
+            size="small"
+            >查询</el-button
+          >
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="exportTable" size="small">导出</el-button>
+          <el-button type="primary" @click="exportTable" size="small"
+            >导出</el-button
+          >
         </el-form-item>
       </el-form>
 
@@ -31,13 +49,10 @@
         v-loading="page.loading"
         size="small"
         id="tableExcel"
-        element-loading-text="拼命加载中"
-        element-loading-spinner="el-icon-loading"
-        element-loading-background="rgba(0, 0, 0, 0.8)"
       >
         <template slot="empty">
           <div>
-            <img src="/image/noData.png" alt class="noData">
+            <img src="/image/noData.png" alt class="noData" />
             <div style="line-height:0px">无数据</div>
           </div>
         </template>
@@ -47,11 +62,31 @@
             <span style="margin-left: 10px">{{ scope.row.date }}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="name" label="渠道ID" align="center"></el-table-column>
-        <el-table-column prop="address" label="渠道名称" align="center"></el-table-column>
-        <el-table-column prop="address" label="链接编号" align="center"></el-table-column>
-        <el-table-column prop="address" label="结算方式" align="center"></el-table-column>
-        <el-table-column prop="address" label="注册数" align="center"></el-table-column>
+        <el-table-column
+          prop="name"
+          label="渠道ID"
+          align="center"
+        ></el-table-column>
+        <el-table-column
+          prop="address"
+          label="渠道名称"
+          align="center"
+        ></el-table-column>
+        <el-table-column
+          prop="address"
+          label="链接编号"
+          align="center"
+        ></el-table-column>
+        <el-table-column
+          prop="address"
+          label="结算方式"
+          align="center"
+        ></el-table-column>
+        <el-table-column
+          prop="address"
+          label="注册数"
+          align="center"
+        ></el-table-column>
       </el-table>
       <div class="pagination">
         <el-pagination
